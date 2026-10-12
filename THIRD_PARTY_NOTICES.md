@@ -7,6 +7,6 @@
 - Three.js 及其扩展为 MIT 许可；保留于 `src/vendor/three.bundle.js` 的构建产物和 [licenses/three-MIT.txt](licenses/three-MIT.txt)。源码入口与 npm 锁文件均保留，便于重建。
 - 新闻截图的来源登记于案例 `source/screenshots/sources.json`，版权属于原发布者；公开源码不包含新闻原图。安装原图时保留内容、日期和出处，不把示意动画当作事件实拍。
 - 本地字体文件未随源码再分发；默认使用系统字体兜底。需要复现本机字体时自行提供合法可用的字体。
-- 克隆音色、声纹样本、生成口播与成片均不随公开源码发布。TTS 工具可连接用户自己的 Voicebox 音色。
+- 克隆音色、声纹样本、生成口播与完整成片均不随公开源码发布。作者明确要求公开的无声展示切片保存在 `docs/gallery/`。TTS 工具可连接用户自己的 Voicebox 音色。
 
 创作参考推文和模型协作分工见 [项目复盘](docs/MAKING_OF.md)。

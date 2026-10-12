@@ -30,3 +30,6 @@ docs/cleanup-local.json
 *.mp3
 *.aac
 *.zip
+
+# Intentionally public, silent excerpt reel (the full movie remains local)
+!docs/gallery/code-video-showreel.mp4

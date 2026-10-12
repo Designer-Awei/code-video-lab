@@ -62,6 +62,12 @@ offset 是成片在正文之前额外增加的时长。只有本案例最终交�
 
 对齐报告在 `qa/voice_alignment.json`。只在新旧录音都安静的位置分段变速；保留新录音中的气口样本，避免把短呼吸无限拉长。试听开场、数字、英文缩写和结尾，声学对齐不是文字核对。
 
+## 重建 README 动态展示
+
+本地有完整交付视频时，在案例目录执行 `python tools/build_showcase.py --video out/final_leibus.mp4 --offset 2`。它按 `docs/gallery/clips.json` 对应的正文时间范围生成四份优化 GIF，并制作 1280×720、30fps、约 25 秒的合集 MP4。所有切片均去掉音轨，完整影片仍不上传。
+
+GIF 为网页展示进行了缩放、轻微降噪和调色板压缩；合集 MP4 保留较高质量。参数与时间段见 tools/build_showcase.py。更换影片时重新核对片头 offset。
+
 ## 换主题而不是只换标题
 
 复制案例的组织方式，再重做事实表、口播、主视觉、模型结构和分镜。可移植 `src/lib.js` 与 `src/three/stage.js` 的工具，但模型的支点、比例、材质和时代外形要随新主题改变。

@@ -1,49 +1,88 @@
-# Code Video Lab：从研究到成片的纯代码视频
+# Code Video Lab
 
-这是 Awei 在 Cursor 中发起、多模型协作完成的《刹车踏板进化史》工程，也是一个可供其他模型学习的完整案例。它展示的不是“让模型写几段动画代码”，而是资料搜集、事实表、口播、分镜、美术、程序化建模、声音、逐帧渲染和反复审片之间的连接。
+**A complete code-driven video production case study — from research and storytelling to procedural models, art direction, narration, and rendered frames.**
 
-**最值得学习的是 Opus5.5 建立的全链路能力，以及第一、第二章的物体建模和美术设计。** 后续章节由 Opus 完成骨架后，Grok4.7 接手完善；GPT-6.1 参与第八章重设计、胶片与打字机效果、声音替换和工程整理。分工依据作者回溯，详见 [项目复盘](docs/MAKING_OF.md)。
+[English](README.md) · [简体中文](README.zh-CN.md)
 
-![八章代表性画面](docs/gallery/overview.jpg)
+The case study is a seven-minute explainer about the evolution of the automobile brake pedal. Its visual system combines Canvas, Three.js, custom shaders, mechanical cutaways, engraving-style shading, and deterministic animation.
 
-## 从哪里开始读
+Started by **Awei in Cursor**, the project documents the end-to-end foundation built with **Opus5.5**, the later chapter development with **Grok4.7**, and the finishing work with **GPT-6.1**. The first two chapters are especially useful examples of procedural modeling and cohesive art direction.
 
-- 给模型直接用：[skills/code-video/SKILL.md](skills/code-video/SKILL.md)。可把整个 `code-video` 文件夹复制到支持 `SKILL.md` 的代理技能目录。
-- 想理解“为什么这样做”：[制作复盘](docs/MAKING_OF.md)。记录参考、模型协作、审片改动和可迁移的经验。
-- 想理解“怎样画出来”：[架构与代码导览](docs/ARCHITECTURE.md)。优先读 `ch1.js`、`ch2.js` 与程序化模型。
-- 想在本机运行或换主题：[运行与复用](docs/REUSE.md)。包括抽帧、章节渲染、TTS 和配音替换。
-- 案例输入：[brief](opus-video/brake-pedal-history/brief.md)、[口播稿](opus-video/brake-pedal-history/script.md)、[当前分镜](opus-video/brake-pedal-history/storyboard.md)、[时间轴](opus-video/brake-pedal-history/timeline.json)。
+[Watch / download the 25-second silent showreel](docs/gallery/code-video-showreel.mp4) · [Reusable agent skill](skills/code-video/SKILL.md) · [Production retrospective](docs/MAKING_OF.md)
 
-## 工程结构
+## Motion highlights
+
+### An engraved automobile, revealed in code
+
+The 1886 Motorwagen emerges through a moving clipping plane. Procedural wheels, linkages, and bodywork combine with ink outlines and cross-hatching to establish the historical visual language.
+
+![Procedural Motorwagen reveal with engraving-style shading](docs/gallery/car-reveal.gif)
+
+Explore: [Chapter 2](opus-video/brake-pedal-history/src/scenes/ch2.js) · [Historical models](opus-video/brake-pedal-history/src/three/models_history.js) · [Rendering pipeline](opus-video/brake-pedal-history/src/three/stage.js)
+
+### Mechanical evolution, one film frame at a time
+
+A hand lever, wooden brake block, stamped steel arm, layered composite, and sensor occupy separate frames of a continuous filmstrip. Sprocket holes and illustrations travel together, with subtle time-driven exposure flicker.
+
+![Continuous filmstrip cycling through five distinct mechanical illustrations](docs/gallery/filmstrip.gif)
+
+Explore: [Chapter 8](opus-video/brake-pedal-history/src/scenes/ch8.js) · [Original mechanical illustrations](opus-video/brake-pedal-history/src/scenes/ch8-art.js)
+
+### A moving mechanical timeline
+
+Years and explanations change on the left as full-size mechanisms slide through the right: lever, three pedals, hydraulics, disc brakes, ABS, by-wire, and EMB.
+
+![Mechanical history carousel with synchronized typography and upward transitions](docs/gallery/history-carousel.gif)
+
+### A typewriter ending with weight and character
+
+Large warm-red serif lettering lands with per-character spring motion, is rapidly backspaced, and gives way to a second line. The cursor follows actual character widths; the original film ends with a slow fade to black.
+
+![Typewriter ending with advancing cursor, backspace, and replacement text](docs/gallery/typewriter.gif)
+
+The excerpts are silent, trimmed from the finished movie, and optimized for README playback. The MP4 reel preserves a higher-resolution presentation for social sharing. The full movie and cloned narration are not included in the public source release.
+
+## The complete production chain
 
 ```text
-skills/code-video/                 可复用制作 skill；渲染、音频、检查脚本
-  SKILL.md
-  references/                      工艺标准、方案和 brief 模板
-  scripts/
-docs/                              制作复盘、架构、运行指南
-  gallery/                         精选八章画面
-  archive/                         标记为历史版本的分镜
-opus-video/brake-pedal-history/     完整案例
-  index.html                       window.render(t) 入口
-  src/scenes/                      八章、封面、结尾机械插画
-  src/three/                       程序化模型、相机与渲染风格
-  src/lib.js                       弹簧、文字、转场和固定种子纹理
-  tools/                           案例时间轴、抽帧、TTS、混音工具
-  source/                          事实表、真实截图来源索引
-  assets/fonts/                    可选本地字体说明
-  audio/vo/segments.example.json    不含音色身份的口播配置示例
-  previews/ qa/ audio/ out/         本地运行产物，不进入 Git
-licenses/                          第三方许可证
+Research and sources → Narration → Brief and shot design
+        → Procedural assets + art direction → Deterministic scenes
+        → Preview and review → Audio alignment → Frame rendering → Delivery
 ```
 
-只保留一个 `previews/` 工作目录；`out/` 只放交付与分章成片。代表性静帧属于 `docs/gallery/`，无需在源码库中堆叠所有 v1、v2 和临时版本。
+The project preserves both the finished implementation and the decisions behind it:
 
-## 快速运行
+- **Mechanical structure before decoration.** Pivots, axles, brackets, curved arms, pads, rods, fasteners, and ribs make the assets explain their function.
+- **Art direction across the whole shot.** Materials, lighting, camera placement, outlines, hatching, typography, and transitions work together.
+- **A frame-addressable renderer.** `window.render(t)` determines the complete frame. Seeded randomness and closed-form springs support out-of-order rendering.
+- **Narration as a timing contract.** Chapter boundaries and pauses are preserved when replacing a voice. Acoustic alignment and pitch-preserving tempo adjustment are kept separate from transcription.
+- **Review before expensive rendering.** Representative frames, movement extremes, transition frames, and small-screen readability are checked before delivery.
 
-需要 Python 3.10+、FFmpeg 和 Chromium。查看或重建 Three.js bundle 时需要 Node.js。
+## Model collaboration
 
-```powershell
+**Opus5.5** established the project framework, storyboards, visual direction, and chapter skeletons. Chapters 1 and 2 were largely completed with Opus, including the detailed pedal assembly and the engraved historical automobile.
+
+**Grok4.7** continued the later chapters after their skeletons were established, with repeated revisions to models, composition, colors, transitions, and readability.
+
+**GPT-6.1** contributed the Chapter 8 redesign, distinct mechanical illustrations, filmstrip and typewriter effects, voice replacement, and repository organization.
+
+**Awei** selected the subject and references, directed the review process, and made the creative decisions. These roles follow the creator's account of the collaboration; they are not a line-by-line authorship audit or a model benchmark.
+
+## Start exploring
+
+- [Agent skill](skills/code-video/SKILL.md): reusable guidance covering the production chain. The entire `code-video` directory can be copied into an agent's skill directory.
+- [Making of](docs/MAKING_OF.md): references, collaboration, review iterations, and lessons.
+- [Architecture](docs/ARCHITECTURE.md): an annotated reading order through the scenes, models, shaders, and timing helpers.
+- [Run and reuse](docs/REUSE.md): previews, rendering, TTS, and voice replacement.
+- Case inputs: [brief](opus-video/brake-pedal-history/brief.md), [narration](opus-video/brake-pedal-history/script.md), [storyboard](opus-video/brake-pedal-history/storyboard.md), [timeline](opus-video/brake-pedal-history/timeline.json).
+
+Supporting production notes and the case narration remain in Chinese. Both README editions describe the same project and link to the same code.
+
+## Quick start
+
+Requires Python 3.10+, FFmpeg, and Chromium. Node.js is needed only to rebuild the included Three.js bundle.
+
+```sh
 python -m pip install -r requirements.txt
 python -m playwright install chromium
 python skills/code-video/scripts/check_env.py
@@ -51,22 +90,33 @@ cd opus-video/brake-pedal-history
 python tools/stills.py demo 65 148 251 397
 ```
 
-打开案例 `index.html` 可以检查画面；在浏览器控制台调用 `window.render(65)`，65 是**正文时间轴**的绝对秒。本地最终交付另加了 2 秒封面片头，因此成片中的同一画面在约 67 秒。公共源码使用系统字体兜底，新闻原图缺失时显示明确的截图占位，详情见 [复现说明](docs/REUSE.md)。
+The browser entry point is `index.html`. Calling `window.render(65)` draws body-timeline second 65. The local finished movie has an additional two-second cover intro, so that frame appears around second 67 in the movie.
 
-## 制作中的关键选择
+Optional local fonts have system fallbacks. Missing news images produce explicit placeholders; reproducing evidence-bearing shots requires installing the original images from the source index. See [reproduction details](docs/REUSE.md).
 
-画面由 Canvas、Three.js 与自写着色器生成；相机、模型姿态、粒子、弹簧和光标均由 `t` 计算。初始化可以缓存几何与纹理，但不能靠前一帧推进动画。
+## Repository layout
 
-物体先按机械结构拆解，再建立支点、转轴、连杆、踏面、螺栓、加强筋和安装关系。材质、灯光、排线、墨线和镜头服务于讲解，不用几个长方体代替全部机械结构。
+```text
+skills/code-video/                 Reusable skill, rendering tools, craft references
+docs/                              Making-of, architecture, reuse and validation notes
+  gallery/                         Selected stills, animated excerpts, silent showreel
+  archive/                         Historical briefs and storyboards
+opus-video/brake-pedal-history/     Complete case study
+  index.html                       window.render(t) entry point
+  src/scenes/                      Chapters and original mechanical illustrations
+  src/three/                       Procedural models and visual pipelines
+  src/lib.js                       Springs, text masks, transitions, seeded textures
+  tools/                           Case timing, previews, TTS and audio tools
+  source/                          Research and news-image source index
+  audio/vo/segments.example.json    Narration configuration without a private voice
+  previews/ qa/ audio/ out/         Local artifacts, excluded from Git
+licenses/                          Third-party license notices
+```
 
-口播与音乐可独立替换，画面先抽帧审核，再正式渲染。对已完成的影片换声时，以原录音为节奏参照，保留气口与原章节时长，不重新排整个时间轴。
+## References and release scope
 
-本案例的主体动画是纯代码。真实新闻截图是事实举证的明确例外；最终封面按作者要求使用了 imagegen。最终版本只保留口播，代码合成配乐脚本仍作为可选能力保留。不要把这些例外描述成“全片所有像素与声音都纯代码合成”。
+Production began with [@xilo2991's tutorial](https://x.com/xilo2991/status/2104912748794589515), a cinematic reference from [@prasenx](https://x.com/prasenx/status/2103851939457093635), and later motion-design guidance from [mg-styles-15](https://github.com/Vincentwei1021/mg-styles-15). The foundational production skill comes from [xilo-opus-video](https://github.com/Kianzzz/xilo-opus-video).
 
-## 参考与贡献
+The main animation is generated in code. Real news screenshots are an explicit evidence exception, and the final cover was generated with imagegen at the creator's request. The final sound version uses narration only; code-synthesized music remains an optional tool in the repository.
 
-创作入口是 [@xilo2991 的教程](https://x.com/xilo2991/status/2104912748794589515)，电影感参考为 [@prasenx 的推文](https://x.com/prasenx/status/2103851939457093635)，后续动效方法参考 [mg-styles-15](https://github.com/Vincentwei1021/mg-styles-15)。基础制作 skill 来自 [xilo-opus-video](https://github.com/Kianzzz/xilo-opus-video)。
-
-Awei 负责选题、参考、审片和创作决策；Opus5.5、Grok4.7、GPT-6.1 是协作制作工具。它们在此项目中的分工不是跨模型性能评测，也不是逐行代码署名。
-
-原创代码和文档采用 MIT。公开仓库不包含本地声纹样本、克隆口播、完整 MP4、商业字体或新闻原图；代码、截图索引、构建入口和精选案例图用于学习与复现。[完整来源说明](THIRD_PARTY_NOTICES.md)。
+Original code and documentation are MIT-licensed. Private voice samples, cloned narration, the full movie, font binaries, and original news images are excluded. The intentionally public motion excerpts contain no narration. [Third-party notices](THIRD_PARTY_NOTICES.md) · [Validation record](docs/VALIDATION.md).
