@@ -1,0 +1,4 @@
+* text=auto eol=lf
+*.jpg binary
+*.png binary
+opus-video/*/src/vendor/three.bundle.js -whitespace linguist-generated=true

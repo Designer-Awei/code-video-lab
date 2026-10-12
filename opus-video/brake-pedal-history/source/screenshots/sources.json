@@ -1,0 +1,128 @@
+{
+  "ithome_zunjie_statement": {
+    "file": "ithome_zunjie_statement.png",
+    "url": "https://www.ithome.com/1/010/703.htm",
+    "note": "IT之家刊发尊界情况说明全文",
+    "anchor_found": true,
+    "captured_at": "2026-10-09T11:24:48"
+  },
+  "sina_zunjie_statement": {
+    "file": "sina_zunjie_statement.png",
+    "url": "https://finance.sina.com.cn/roll/2026-10-08/doc-iniuptaz3504565.shtml",
+    "note": "封面新闻（新浪财经转载）刊发尊界情况说明全文",
+    "anchor_found": true,
+    "captured_at": "2026-10-09T11:29:52"
+  },
+  "ithome_dongchedi_reply": {
+    "file": "ithome_dongchedi_reply.png",
+    "url": "https://www.ithome.com/1/010/721.htm",
+    "note": "IT之家：懂车帝回应，真实峰值 1612N",
+    "anchor_found": true,
+    "captured_at": "2026-10-09T11:25:07"
+  },
+  "cnr_tracking": {
+    "file": "cnr_tracking.png",
+    "url": "https://finance.cnr.cn/ycbd/20261008/t20261008_527836564.shtml",
+    "note": "央广网：事件追踪（测试日期、制动距离、踏板力）",
+    "anchor_found": true,
+    "captured_at": "2026-10-09T11:28:24"
+  },
+  "nbd_three_cars": {
+    "file": "nbd_three_cars.png",
+    "url": "https://cd.nbd.com.cn/articles/2026-10-08/4599008.html",
+    "note": "每经网：三辆车断口一致，1612 牛",
+    "anchor_found": true,
+    "captured_at": "2026-10-09T11:25:23"
+  },
+  "bjnews_reply": {
+    "file": "bjnews_reply.png",
+    "url": "https://www.bjnews.com.cn/detail/1791465628129851.html",
+    "note": "新京报：尊界回应将免费升级",
+    "anchor_found": true,
+    "captured_at": "2026-10-09T11:25:30"
+  },
+  "yicai_pedal_force": {
+    "file": "yicai_pedal_force.png",
+    "url": "https://www.yicai.com/news/103386641.html",
+    "note": "第一财经：一个刹车踏板应该扛住多大的力（500N / 1500N 标准解读）",
+    "anchor_found": true,
+    "captured_at": "2026-10-09T11:28:32"
+  },
+  "ndls_gb21670": {
+    "file": "ndls_gb21670.png",
+    "url": "https://www.ndls.org.cn/standard/detail/f30fce6c0dc62cebc6d7a8223c9bbb3d",
+    "note": "国家标准馆：GB 21670-2025 条目",
+    "anchor_found": true,
+    "captured_at": "2026-10-09T11:28:41"
+  },
+  "zunjie_weibo_original": {
+    "file": "zunjie_weibo_original.jpg",
+    "url": "https://finance.sina.com.cn/roll/2026-10-08/doc-iniuptaz3504565.shtml",
+    "note": "尊界汽车官方微博原帖截图（2026-10-08 21:08 发布），由封面新闻刊于新浪财经报道内",
+    "anchor_found": null,
+    "captured_at": "2026-10-09T11:40:00"
+  },
+  "dcd_frame_qdxin_1": {
+    "file": "dcd_frame_qdxin_1.jpg",
+    "url": "https://www.qdxin.cn/xin/2026/393205.html",
+    "note": "懂车帝实测视频画面（信网转载，来源：懂车帝）",
+    "anchor_found": null,
+    "captured_at": "2026-10-09T11:40:00"
+  },
+  "dcd_frame_qdxin_2": {
+    "file": "dcd_frame_qdxin_2.jpg",
+    "url": "https://www.qdxin.cn/xin/2026/393205.html",
+    "note": "懂车帝实测：第三台第 2 次制动 140m（断裂）、踏板力 max 1612N（信网转载，带信网水印）",
+    "anchor_found": null,
+    "captured_at": "2026-10-09T11:40:00"
+  },
+  "dcd_frame_wscn_1": {
+    "file": "dcd_frame_wscn_1.png",
+    "url": "https://wallstreetcn.com/articles/3783191",
+    "note": "懂车帝实测：第一辆 10.01 第 3 次、第二辆 10.03 第 4 次制动现场（华尔街见闻转载）",
+    "anchor_found": null,
+    "captured_at": "2026-10-09T11:40:00"
+  },
+  "dcd_frame_wscn_2": {
+    "file": "dcd_frame_wscn_2.png",
+    "url": "https://wallstreetcn.com/articles/3783191",
+    "note": "懂车帝实测：2026 款领航版 4 次制动距离，第 4 次踏板支架断裂 151.79m（华尔街见闻转载）",
+    "anchor_found": null,
+    "captured_at": "2026-10-09T11:40:00"
+  },
+  "dcd_frame_wscn_3": {
+    "file": "dcd_frame_wscn_3.png",
+    "url": "https://wallstreetcn.com/articles/3783191",
+    "note": "懂车帝实测：踏板支架断裂痕迹特写（华尔街见闻转载）",
+    "anchor_found": null,
+    "captured_at": "2026-10-09T11:40:00"
+  },
+  "dcd_frame_wscn_4": {
+    "file": "dcd_frame_wscn_4.png",
+    "url": "https://wallstreetcn.com/articles/3783191",
+    "note": "懂车帝实测：三台测试车并列（华尔街见闻转载）",
+    "anchor_found": null,
+    "captured_at": "2026-10-09T11:40:00"
+  },
+  "autohome_breakaway": {
+    "file": "autohome_breakaway.png",
+    "url": "https://chejiahao.autohome.com.cn/info/26621901",
+    "note": "汽车之家车家号·科技丛林（2026-10-10）。首次打开能定位到「断裂诱导槽」，随后该站返回 567 拦截，截图未保留。同题论述用澎湃新闻截图入画。",
+    "anchor_found": false,
+    "captured_at": "2026-10-10T11:51:08"
+  },
+  "sina_breakaway": {
+    "file": "sina_breakaway.png",
+    "url": "https://k.sina.com.cn/article_7879996057_1d5af3299068020vw2.html?from=auto",
+    "note": "新浪新闻·科技动态追踪（2026-10-09）：碰撞溃缩是保护设计，正常踩踏断裂是缺陷",
+    "anchor_found": true,
+    "captured_at": "2026-10-10T11:48:59"
+  },
+  "thepaper_intrusion": {
+    "file": "thepaper_intrusion.png",
+    "url": "https://www.thepaper.cn/newsDetail_forward_34212476",
+    "note": "澎湃新闻（2026-10-08）：防侵入式踏板是行业通行方案，正面碰撞时可控脱落或溃缩，避免侵入驾驶舱",
+    "anchor_found": true,
+    "captured_at": "2026-10-10T11:54:47"
+  }
+}

@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>一块踏板，一百四十年</title>
+<style>
+  @font-face { font-family: "HSBold"; src: url("assets/fonts/HarmonyOS_Sans_SC_Bold.ttf"); }
+  @font-face { font-family: "HSRegular"; src: url("assets/fonts/HarmonyOS_Sans_SC_Regular.ttf"); }
+  @font-face { font-family: "CMono"; src: url("assets/fonts/CascadiaMono.ttf"); }
+  @font-face { font-family: "OutroSong"; src: url("assets/fonts/OutroSong.ttf"); }
+  html, body { margin: 0; background: #000; overflow: hidden; }
+  canvas { position: absolute; left: 0; top: 0; width: 100vw; height: 100vh; display: block; }
+</style>
+</head>
+<body>
+<canvas id="gl" width="1920" height="1080"></canvas>
+<canvas id="c" width="1920" height="1080"></canvas>
+<script src="src/vendor/three.bundle.js"></script>
+<script src="src/timeline.js"></script>
+<script src="src/lib.js"></script>
+<script src="src/three/stage.js"></script>
+<script src="src/three/models_pedal.js"></script>
+<script src="src/three/models_history.js"></script>
+<script src="src/three/models_era.js"></script>
+<script>
+  /** 场景注册表：SCENES[章节序号] = { init(), render(ctx, t, ch, T) }，t 为章节内时间（秒） */
+  window.SCENES = {};
+  /** 预加载的图片：IMG[文件名去扩展名] */
+  window.IMG = {};
+</script>
+<script src="src/scenes/ch1.js"></script>
+<script src="src/scenes/ch2.js"></script>
+<script src="src/scenes/ch3.js"></script>
+<script src="src/scenes/ch4.js"></script>
+<script src="src/scenes/ch5.js"></script>
+<script src="src/scenes/ch6.js"></script>
+<script src="src/scenes/ch7.js"></script>
+<script src="src/scenes/ch8-art.js"></script>
+<script src="src/scenes/ch8.js"></script>
+<script src="src/scenes/cover.js"></script>
+<script>
+(function () {
+  const IMAGES = [
+    'zunjie_weibo_original.jpg', 'dcd_frame_wscn_1.png', 'dcd_frame_wscn_2.png', 'dcd_frame_wscn_3.png',
+    'dcd_frame_wscn_4.png', 'dcd_frame_qdxin_2.jpg', 'cnr_tracking.png', 'nbd_three_cars.png', 'bjnews_reply.png',
+    'ithome_dongchedi_reply.png', 'yicai_pedal_force.png', 'ndls_gb21670.png',
+    'thepaper_intrusion.png', 'sina_breakaway.png',
+  ];
+  const glCanvas = document.getElementById('gl');
+  const canvas = document.getElementById('c');
+  const ctx = canvas.getContext('2d');
+  const TL = window.TIMELINE;
+  const COVER = new URLSearchParams(location.search).has('cover');
+  window.ready = false;
+  /** 章节之间统一用斜切划像 */
+  const CH_TR = 'wipe';
+
+  /** 由全片时间 t 找到当前章节并交给对应场景绘制 */
+  window.render = function (t) {
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.globalAlpha = 1;
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.clearRect(0, 0, L.W, L.H);
+    STAGE.used = false;
+    if (COVER) {
+      window.COVER_SCENE.render(ctx, t);
+    } else {
+      const ci = Math.max(0, TL.chapters.findIndex((c) => t >= c.start && t < c.end));
+      const ch = TL.chapters[ci], prev = TL.chapters[ci - 1];
+      const scene = window.SCENES[ch.index], prevScene = prev && window.SCENES[prev.index];
+      const d = L.TR_DUR[CH_TR];
+      if (scene && prevScene && t - ch.start < d) {
+        L.transition(ctx, CH_TR, (t - ch.start) / d, () => prevScene.render(ctx, t - prev.start, prev, t), () => scene.render(ctx, t - ch.start, ch, t));
+      } else if (scene) scene.render(ctx, t - ch.start, ch, t);
+    }
+    glCanvas.style.visibility = STAGE.used ? 'visible' : 'hidden';
+  };
+
+  const loads = IMAGES.map((f) => new Promise((res) => {
+    const img = new Image();
+    img.onload = () => { IMG[f.replace(/\.\w+$/, '')] = img; res(); };
+    img.onerror = () => {
+      // Public source releases omit third-party news images; placeholders never invent evidence.
+      const placeholder = document.createElement('canvas');
+      placeholder.width = 820; placeholder.height = 580;
+      const g = placeholder.getContext('2d');
+      g.fillStyle = '#eee7d8'; g.fillRect(0, 0, 820, 580);
+      g.fillStyle = '#30291f'; g.font = '36px sans-serif';
+      g.fillText('真实报道截图 / source image', 45, 190);
+      g.font = '23px sans-serif';
+      g.fillText('请按 sources.json 安装原图后再制作事实类成片', 45, 255);
+      g.fillText(f, 45, 340);
+      IMG[f.replace(/\.\w+$/, '')] = placeholder;
+      res();
+    };
+    img.src = 'source/screenshots/' + f;
+  }));
+  const fonts = ['HSBold', 'HSRegular', 'CMono', 'OutroSong'].map((f) => document.fonts.load(`40px "${f}"`).catch(() => []));
+  Promise.all([...loads, ...fonts]).then(() => document.fonts.ready).then(() => {
+    L.initTextures();
+    STAGE.init(glCanvas);
+    Object.values(window.SCENES).forEach((s) => s.init && s.init());
+    if (window.COVER_SCENE && window.COVER_SCENE.init) window.COVER_SCENE.init();
+    window.render(0);
+    window.ready = true;
+  });
+})();
+</script>
+</body>
+</html>

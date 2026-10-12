@@ -1,0 +1,32 @@
+# Local tool installations and reference clones
+.agents/
+.cursor/
+.refs/
+.venv/
+node_modules/
+__pycache__/
+*.pyc
+.env
+.env.*
+!.env.example
+
+# Runtime media, cloned voices and local QA data
+opus-video/*/out/
+opus-video/*/previews/
+opus-video/*/qa/
+opus-video/*/audio/**
+!opus-video/*/audio/vo/
+!opus-video/*/audio/vo/segments.example.json
+opus-video/*/assets/fonts/*
+!opus-video/*/assets/fonts/README.md
+opus-video/*/source/screenshots/*
+!opus-video/*/source/screenshots/sources.json
+!opus-video/*/source/screenshots/README.md
+docs/cleanup-local.json
+
+# Long videos belong in releases or local delivery, never the source tree
+*.mp4
+*.wav
+*.mp3
+*.aac
+*.zip
