@@ -113,9 +113,22 @@ opus-video/brake-pedal-history/     Complete case study
 licenses/                          Third-party license notices
 ```
 
-## References and release scope
+## Acknowledgments and references
 
-Production began with [@xilo2991's tutorial](https://x.com/xilo2991/status/2104912748794589515), a cinematic reference from [@prasenx](https://x.com/prasenx/status/2103851939457093635), and later motion-design guidance from [mg-styles-15](https://github.com/Vincentwei1021/mg-styles-15). The foundational production skill comes from [xilo-opus-video](https://github.com/Kianzzz/xilo-opus-video).
+The following creators and open-source projects contributed production methods, visual references, and foundational tools:
+
+- **[@xilo2991's Opus5.5 video tutorial](https://x.com/xilo2991/status/2104912748794589515)** inspired the project structure, code-generated visuals, and end-to-end production workflow.
+- **[@prasenx's cinematic video reference](https://x.com/prasenx/status/2103851939457093635)** informed storytelling, pacing, and cinematic presentation.
+- **[Kianzzz/xilo-opus-video](https://github.com/Kianzzz/xilo-opus-video)** supplied the foundational production skill, rendering scripts, and audio tools, extended here with case-specific lessons and reuse documentation.
+- **[Vincentwei1021/mg-styles-15](https://github.com/Vincentwei1021/mg-styles-15)** provided motion-design, art-direction, and review references.
+- **[Jamie Pine / Voicebox](https://github.com/jamiepine/voicebox)** provided the local speech-generation service used for narration. The project's [TTS adapter](opus-video/brake-pedal-history/tools/voicebox_tts.py) generates audio by paragraph; pause preservation and timing alignment enable narration replacement. Voicebox exposes both REST and MCP interfaces.
+- **[Three.js](https://github.com/mrdoob/three.js)**, **[Playwright](https://github.com/microsoft/playwright)**, and **[FFmpeg](https://ffmpeg.org/)** support procedural 3D visuals, browser frame capture, and media encoding, mixing, and muxing, respectively.
+
+News and technical evidence are tracked in the [research notes](opus-video/brake-pedal-history/source/research.md) and [screenshot source index](opus-video/brake-pedal-history/source/screenshots/sources.json). These credits identify tools and references; they do not imply participation or endorsement by their creators.
+
+## Release scope
+
+
 
 The main animation is generated in code. Real news screenshots are an explicit evidence exception, and the final cover was generated with imagegen at the creator's request. The final sound version uses narration only; code-synthesized music remains an optional tool in the repository.
 

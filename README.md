@@ -113,9 +113,22 @@ opus-video/brake-pedal-history/     完整案例
 licenses/                          第三方许可证
 ```
 
-## 参考与公开范围
+## 致谢与参考
 
-创作入口为 [@xilo2991 教程](https://x.com/xilo2991/status/2104912748794589515)，电影感参考来自 [@prasenx](https://x.com/prasenx/status/2103851939457093635)，后续动效参考 [mg-styles-15](https://github.com/Vincentwei1021/mg-styles-15)。基础制作 skill 来自 [xilo-opus-video](https://github.com/Kianzzz/xilo-opus-video)。
+感谢以下创作者与开源项目，为这个案例提供了制作方法、视觉参考和基础工具：
+
+- **[@xilo2991 的 Opus5.5 视频教程](https://x.com/xilo2991/status/2104912748794589515)**：启发项目结构、纯代码画面和从策划到交付的完整制作流程。
+- **[@prasenx 的电影感视频参考](https://x.com/prasenx/status/2103851939457093635)**：提供叙事、画面节奏与电影感表达的参考。
+- **[Kianzzz/xilo-opus-video](https://github.com/Kianzzz/xilo-opus-video)**：提供基础制作 skill、渲染与音频工具；本仓库在此基础上补充案例经验与复用说明。
+- **[Vincentwei1021/mg-styles-15](https://github.com/Vincentwei1021/mg-styles-15)**：提供动效、美术风格与评审方法的参考。
+- **[Jamie Pine / Voicebox](https://github.com/jamiepine/voicebox)**：本片口播使用其本地语音合成服务生成。工程通过 [TTS 适配器](opus-video/brake-pedal-history/tools/voicebox_tts.py) 按段落生成音频，再结合停顿保留与时间对齐完成配音替换；Voicebox 本身提供 REST API 与 MCP 接口。
+- **[Three.js](https://github.com/mrdoob/three.js)**、**[Playwright](https://github.com/microsoft/playwright)** 与 **[FFmpeg](https://ffmpeg.org/)**：分别支撑程序化三维画面、浏览器逐帧采集和音视频编码、混音与封装。
+
+新闻与技术论据另见 [事实资料](opus-video/brake-pedal-history/source/research.md) 和 [截图来源索引](opus-video/brake-pedal-history/source/screenshots/sources.json)。以上引用标明实际使用或参考的环节，不代表原作者参与制作或为本片结论背书。
+
+## 公开范围
+
+
 
 主体动画由代码生成。真实新闻截图是事实举证例外，最终封面按作者要求使用 imagegen。最终声音版本仅保留口播；代码合成配乐仍作为可选能力保留。
 
