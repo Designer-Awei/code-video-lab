@@ -2,7 +2,7 @@
 
 **一个完整的代码视频制作案例，连接资料研究、叙事、程序化建模、美术设计、口播和逐帧渲染。**
 
-[English](README.md) · [简体中文](README.zh-CN.md)
+[简体中文](README.md) · [English](README.en.md)
 
 案例是一部约七分钟的汽车刹车踏板进化史科普片。画面组合了 Canvas、Three.js、自写着色器、机械剖面、铜版画排线和确定性动画。
 
