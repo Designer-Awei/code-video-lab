@@ -4,6 +4,8 @@
 
 [简体中文](README.md) · [English](README.en.md)
 
+**观看完整视频：** [抖音](https://www.douyin.com/user/self?from_tab_name=main&modal_id=7695006451266616506&showTab=post) · [小红书](https://www.xiaohongshu.com/explore/6aca22b30000000014033f06?xsec_token=AB2sHPmpro4p4SXQqL09-WL425sMAoJDcSgF2Vyh3XZN0=&xsec_source=pc_user)
+
 案例是一部约七分钟的汽车刹车踏板进化史科普片。画面组合了 Canvas、Three.js、自写着色器、机械剖面、铜版画排线和确定性动画。
 
 工程由 **Awei 在 Cursor 中发起**，记录了 **Opus5.5** 建立的全链路基础、**Grok4.7** 接手后续章节，以及 **GPT-6.1** 完成收尾的协作过程。第一、第二章尤其适合学习程序化建模与统一的美术语言。

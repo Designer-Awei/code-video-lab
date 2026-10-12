@@ -4,6 +4,8 @@
 
 [简体中文](README.md) · [English](README.en.md)
 
+**Watch the full video:** [Douyin](https://www.douyin.com/user/self?from_tab_name=main&modal_id=7695006451266616506&showTab=post) · [Xiaohongshu](https://www.xiaohongshu.com/explore/6aca22b30000000014033f06?xsec_token=AB2sHPmpro4p4SXQqL09-WL425sMAoJDcSgF2Vyh3XZN0=&xsec_source=pc_user)
+
 The case study is a seven-minute explainer about the evolution of the automobile brake pedal. Its visual system combines Canvas, Three.js, custom shaders, mechanical cutaways, engraving-style shading, and deterministic animation.
 
 Started by **Awei in Cursor**, the project documents the end-to-end foundation built with **Opus5.5**, the later chapter development with **Grok4.7**, and the finishing work with **GPT-6.1**. The first two chapters are especially useful examples of procedural modeling and cohesive art direction.
